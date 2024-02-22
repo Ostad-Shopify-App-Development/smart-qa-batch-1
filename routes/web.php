@@ -15,4 +15,11 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
+})->middleware(['verify.shopify'])->name('home');
+
+
+Route::group(['middleware' => ['verify.shopify']], function () {
+    Route::group(['prefix' => 'qa'], function () {
+        Route::get('/create', [\App\Http\Controllers\QAController::class, 'create'])->name('qa.create');
+    });
 });
