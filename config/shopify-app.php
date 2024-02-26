@@ -381,6 +381,14 @@ return [
     */
 
     'webhooks' => [
+        [
+            'topic' => env('SHOPIFY_WEBHOOK_1_TOPIC', 'APP_UNINSTALLED'),
+            'address' => env('SHOPIFY_WEBHOOK_1_ADDRESS', shopify_webhook_url('webhook/app-uninstalled')),
+        ],
+        [
+            'topic' => env('SHOPIFY_WEBHOOK_2_TOPIC', 'BULK_OPERATIONS_FINISH'),
+            'address' => env('SHOPIFY_WEBHOOK_2_ADDRESS', shopify_webhook_url('webhook/bulk-operations-finish')),
+        ],
         /*
             [
                 'topic' => env('SHOPIFY_WEBHOOK_1_TOPIC', 'ORDERS_CREATE'),
