@@ -201,7 +201,7 @@ return [
     |
     */
 
-    'api_scopes' => env('SHOPIFY_API_SCOPES', 'read_products,write_products,read_themes'),
+    'api_scopes' => env('SHOPIFY_API_SCOPES', 'read_products,write_products,read_themes,read_script_tags,write_script_tags'),
 
     /*
     |--------------------------------------------------------------------------
@@ -350,7 +350,7 @@ return [
 
     'listen' => [
         \Osiset\ShopifyApp\Messaging\Events\AppInstalledEvent::class => [
-            // \App\Listeners\MyListener::class,
+//             App\Listeners\AfterInstalledListener::class,
         ],
         \Osiset\ShopifyApp\Messaging\Events\ShopAuthenticatedEvent::class => [
             // \App\Listeners\MyListener::class,
@@ -417,14 +417,12 @@ return [
     */
 
     'scripttags' => [
-        /*
             [
-                'src' => env('SHOPIFY_SCRIPTTAG_1_SRC', 'https://some-app.com/some-controller/js-method-response'),
+                'src' => env('SHOPIFY_SCRIPTTAG_1_SRC', 'https://dear-workable-earwig.ngrok-free.app/assets/js/storefront.js'),
                 'event' => env('SHOPIFY_SCRIPTTAG_1_EVENT', 'onload'),
-                'display_scope' => env('SHOPIFY_SCRIPTTAG_1_DISPLAY_SCOPE', 'online_store')
+                'display_scope' => env('SHOPIFY_SCRIPTTAG_1_DISPLAY_SCOPE', 'all')
             ],
-            ...
-        */
+
     ],
 
     /*
@@ -444,12 +442,12 @@ return [
      * @see
      */
     'after_authenticate_job' => [
-        /*
+
             [
-                'job' => env('AFTER_AUTHENTICATE_JOB'), // example: \App\Jobs\AfterAuthorizeJob::class
-                'inline' => env('AFTER_AUTHENTICATE_JOB_INLINE', false) // False = dispatch job for later, true = dispatch immediately
+                'job' => env('AFTER_AUTHENTICATE_JOB', \App\Jobs\AfterAuthenticateJob::class), // example: \App\Jobs\AfterAuthorizeJob::class
+                'inline' => env('AFTER_AUTHENTICATE_JOB_INLINE', true) // False = dispatch job for later, true = dispatch immediately
             ],
-        */
+
     ],
 
     /*
@@ -464,7 +462,7 @@ return [
 
     'job_queues' => [
         'webhooks' => env('WEBHOOKS_JOB_QUEUE', null),
-        'scripttags' => env('SCRIPTTAGS_JOB_QUEUE', null),
+        'scripttags' => env('SCRIPTTAGS_JOB_QUEUE', 'sync'),
         'after_authenticate' => env('AFTER_AUTHENTICATE_JOB_QUEUE', null),
     ],
 

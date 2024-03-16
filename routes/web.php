@@ -23,3 +23,8 @@ Route::group(['middleware' => ['verify.shopify']], function () {
         Route::get('/create', [\App\Http\Controllers\QAController::class, 'create'])->name('qa.create');
     });
 });
+
+Route::get('/mail', function () {
+     \Illuminate\Support\Facades\Mail::to('pritomshajed@gmail.com')->send(new \App\Mail\TestMail());
+     return ['status' => 'sent'];
+});
