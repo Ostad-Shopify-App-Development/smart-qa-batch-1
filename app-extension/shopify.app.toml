@@ -1,0 +1,24 @@
+# Learn more about configuring your app at https://shopify.dev/docs/apps/tools/cli/configuration
+
+client_id = "a0dd64fab0a9e608a9f3a21ce76f3046"
+name = "Smart QA"
+handle = "smart-qa"
+application_url = "https://dear-workable-earwig.ngrok-free.app/"
+embedded = true
+
+[build]
+dev_store_url = "ostad-store-bd.myshopify.com"
+include_config_on_deploy = true
+
+[access_scopes]
+# Learn more at https://shopify.dev/docs/apps/tools/cli/configuration#access_scopes
+scopes = "read_products,read_script_tags,read_themes,write_products,write_script_tags"
+
+[auth]
+redirect_urls = [ "https://dear-workable-earwig.ngrok-free.app/authenticate" ]
+
+[webhooks]
+api_version = "2024-01"
+
+[pos]
+embedded = false

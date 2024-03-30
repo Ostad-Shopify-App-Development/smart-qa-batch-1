@@ -28,3 +28,8 @@ Route::get('/mail', function () {
      \Illuminate\Support\Facades\Mail::to('pritomshajed@gmail.com')->send(new \App\Mail\TestMail());
      return ['status' => 'sent'];
 });
+
+Route::group(['prefix' => 'widgets'], function () {
+    Route::get('/general', [\App\Http\Controllers\WidgetController::class, 'general'])->name('widget.general');
+});
+
