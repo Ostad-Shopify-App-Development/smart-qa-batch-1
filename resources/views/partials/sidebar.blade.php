@@ -29,6 +29,13 @@
             </ul>
         </li><!-- End Components Nav -->
 
+        <li class="nav-item">
+            <a class="nav-link " href="{{ URL::shopifyRoute('pricing') }}">
+                <i class="bi bi-grid"></i>
+                <span>Price</span>
+            </a>
+        </li>
+
     </ul>
 
 </aside><!-- End Sidebar-->

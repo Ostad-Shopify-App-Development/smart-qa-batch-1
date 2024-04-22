@@ -22,6 +22,8 @@ Route::group(['middleware' => ['verify.shopify']], function () {
     Route::group(['prefix' => 'qa'], function () {
         Route::get('/create', [\App\Http\Controllers\QAController::class, 'create'])->name('qa.create');
     });
+
+    Route::get('/pricing', [\App\Http\Controllers\BillingController::class, 'pricing'])->name('pricing');
 });
 
 Route::get('/mail', function () {
@@ -32,4 +34,6 @@ Route::get('/mail', function () {
 Route::group(['prefix' => 'widgets'], function () {
     Route::get('/general', [\App\Http\Controllers\WidgetController::class, 'general'])->name('widget.general');
 });
+
+
 
